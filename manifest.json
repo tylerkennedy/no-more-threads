@@ -11,7 +11,6 @@
       "default_title" : "No More Threads"
   },
   "permissions": [
-    "tabs",
     "storage",
     "scripting"
   ],
