@@ -1,6 +1,5 @@
 function init() {
-  // Add toggle switch to the menu bar
-  const menuBarXPath = '//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div/div/div[1]/div[1]/div/div/div/div/div'
+  const menuBarXPath = '//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div/div/div[1]/div[1]/div/div/div/div'
 
   let menuBar = document.evaluate(menuBarXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null,).singleNodeValue;
 
@@ -60,7 +59,7 @@ function createToggleElement(menu) {
   let textElement = document.createElement('p');
   textElement.innerHTML = 'Hide Threads';
 
-  const colorSwatchXPath = '//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div/div/div[1]/div[1]/div/div/div/div/div/div[1]/div/h2';
+  const colorSwatchXPath = '//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div/div/div[1]/div[1]/div/div/div/div/div[1]/div[1]/h2/span';
   let colorSwatchElement = document.evaluate(colorSwatchXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null,).singleNodeValue;
   let fontColor = window.getComputedStyle(colorSwatchElement , null).getPropertyValue('color')
   textElement.style.color = fontColor;
