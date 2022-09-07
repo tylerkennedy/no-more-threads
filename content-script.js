@@ -38,7 +38,7 @@ function init() {
 }
 init();
 
-// Execute this code when the toggle is clicked
+// Change the visual status of the toggle and set the hide status on click
 function clickToggle() {
   hideStatus = document.querySelector('#toggle-input').checked;
   chrome.storage.sync.set({ hideStatus });
