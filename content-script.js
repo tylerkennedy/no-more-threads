@@ -1,25 +1,23 @@
 function init() {
-  const menuBarXPath = '//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div/div/div[1]/div[1]/div/div/div/div'
 
-  let menuBar = document.evaluate(menuBarXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null,).singleNodeValue;
+  let timeline = document.querySelector("[aria-label='Home timeline']");
 
-  let menuBarExists = setInterval(function () {
-    if(menuBar) {
-      clearInterval(menuBarExists);
-      createToggleElement(menuBar);
-    }
-    menuBar = document.evaluate(menuBarXPath,document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null,).singleNodeValue;
-  }, 100)
-
-  let timeline = document.querySelector("[aria-label='Share Tweet']");
   let timelineExists = setInterval(function () {
     if(timeline) {
       clearInterval(timelineExists);
-      console.log("Timeline exists!");
+      createToggleElement(document.querySelector("body"))
+    }
+    timeline = document.querySelector("[aria-label='Home timeline']");
+  }, 100)
+
+  let tweet = document.querySelector("[aria-label='Share Tweet']");
+  let tweetExists = setInterval(function () {
+    if(tweet) {
+      clearInterval(tweetExists);
       hideThreads();
       setupMutationObserver();
     }
-    timeline = document.querySelector("[aria-label='Share Tweet']");
+    tweet = document.querySelector("[aria-label='Share Tweet']");
   })
 
   function setupMutationObserver() {
@@ -58,10 +56,10 @@ function createToggleElement(menu) {
 
   let textElement = document.createElement('p');
   textElement.innerHTML = 'Hide Threads';
-
-  const colorSwatchXPath = '//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div/div/div[1]/div[1]/div/div/div/div/div[1]/div[1]/h2/span';
-  let colorSwatchElement = document.evaluate(colorSwatchXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null,).singleNodeValue;
-  let fontColor = window.getComputedStyle(colorSwatchElement , null).getPropertyValue('color')
+  
+  // Get text color from timeline heading to make the toggle text match
+  let colorSwatchElement = document.querySelector("[aria-label='Home timeline'] h2");
+  let fontColor = window.getComputedStyle(colorSwatchElement , null).getPropertyValue('color');
   textElement.style.color = fontColor;
   
   let inputElement = document.createElement('input');
@@ -81,7 +79,7 @@ function createToggleElement(menu) {
   labelElement.appendChild(spanElement);
   inputElement.addEventListener('click', clickToggle);
   divElement.appendChild(labelElement)
-  menu.insertBefore(divElement, menu.children[1])
+  menu.insertBefore(divElement, menu.children[0])
 }
 
 function hideThreads() {

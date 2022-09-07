@@ -61,6 +61,17 @@ input:checked + .slider:before {
 .toggle-container {
   display: flex;
   align-items: center;
+  position: sticky;
+  top: 0;
+  justify-content: center;
+  margin: auto;
+  max-width: 200px;
+  z-index: 1000000;
+}
+
+/* Prevent sticky toggle container from being hidden after scrolling inital view port height */
+body {
+  height: auto !important;
 }
 
 .toggle-container > p {
