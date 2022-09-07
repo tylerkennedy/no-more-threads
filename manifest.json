@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "No More Threads - Hide Twitter Threads",  
   "description": "Hide Threads on Twitter",  
-  "version": "1.0",
+  "version": "1.01",
   "icons": {
     "48": "icon.png"
 },
