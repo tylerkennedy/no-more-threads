@@ -5,7 +5,7 @@
   "version": "1.01",
   "icons": {
     "48": "icon.png"
-},
+  },
   "action": { 
       "default_icon": "icon.png",
       "default_title" : "No More Threads"
